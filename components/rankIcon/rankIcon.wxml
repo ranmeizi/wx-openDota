@@ -1,0 +1,6 @@
+<view class='rank'>
+  <!-- 段位 -->
+  <view class="icon-{{rankIcon}}"></view>
+  <!-- 星级 -->
+  <view class="star-{{rankStar}}"></view>
+</view>

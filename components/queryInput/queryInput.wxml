@@ -1,0 +1,13 @@
+<view class='bg'>
+  <!-- dota2图标 -->
+  <view class="dota2-icon"></view>
+  <!-- 文字背景 -->
+  <view class="text-bg"></view>
+  <!-- 标语 -->
+  <view class="title">勇士联赛小助手</view>
+  <!-- 输入框 -->
+  <view class='input'>
+    <input type="text" confirm-type="search" bindinput="inputChange" bindfocus='focus'></input>
+    <button bindtap='query'>查询</button>
+  </view>
+</view>

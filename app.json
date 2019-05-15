@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/PlayerQuery/PlayerQuery",
+    "pages/AutoChess/AutoChess",
+    "pages/HeroData/HeroData"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#263238",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#fff",
+    "selectedColor": "#1296db",
+    "backgroundColor": "#263238",
+    "list": [
+      {
+        "pagePath": "pages/PlayerQuery/PlayerQuery",
+        "text": "搜索",
+        "iconPath": "images/PlayerQuery/icon/query.png",
+        "selectedIconPath": "images/PlayerQuery/icon/querySel.png"
+      },
+      {
+        "pagePath": "pages/HeroData/HeroData",
+        "text": "英雄资料"
+      },
+      {
+        "pagePath": "pages/AutoChess/AutoChess",
+        "text": "AutoChess",
+        "iconPath": "images/AutoChess/icon/chess.png",
+        "selectedIconPath": "images/AutoChess/icon/chessSel.png"
+      }
+    ]
+  }
+}

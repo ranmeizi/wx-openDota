@@ -1,0 +1,28 @@
+/* pages/playerQuery/playerQuery.wxss */
+
+.bg {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('http://m.qpic.cn/psb?/V12yzkfP40OwEU/p9yJ2Th6XEKpeUB*oMnLntKDC7QFQb93tqDBiBfDBm4!/b/dL8AAAAAAAAA&bo=2AGkAgAAAAARB08!&rf=viewer_4');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.input {
+  width: 50vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 10rpx;
+  border: 2rpx solid beige;
+  border-radius: 10rpx;
+}
+
+.ranInput {
+  position: absolute;
+  transition: 0.8s;
+}

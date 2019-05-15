@@ -1,0 +1,83 @@
+/* components/queryInput/queryInput.wxss */
+
+.bg {
+  position: relative;
+  height: 55vw;
+  width: 100vw;
+  background-image: url('http://m.qpic.cn/psb?/V12yzkfP40OwEU/hJIVmQg4yazfAQduxyjrbpDfeRQSa8YK4yEH5RpzLJY!/b/dDQBAAAAAAAA&bo=mQHiAAAAAAADB1g!&rf=viewer_4');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.dota2-icon {
+  position: absolute;
+  height: 15vw;
+  width: 15vw;
+  opacity: 0.5;
+  background-image: url('http://m.qpic.cn/psb?/V12yzkfP40OwEU/j4bCeRbetXeXxS..IHP.8Z*tnJMHPQCqR48WKX5K70g!/b/dLYAAAAAAAAA&bo=QABAAAAAAAADByI!&rf=viewer_4');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  top: 17rpx;
+  left: 37rpx;
+}
+
+.text-bg {
+  position: absolute;
+  height: 90%;
+  width: 90%;
+  opacity: 0.5;
+  background-image: url('http://m.qpic.cn/psb?/V12yzkfP40OwEU/W4ZqJiQ0Q7Knqnihl0j4coRX4vJcW6DVvdDfhdklN5E!/b/dL8AAAAAAAAA&bo=hwIOAQAAAAADB6g!&rf=viewer_4');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  top: 50rpx;
+  left: 30rpx;
+}
+
+.title {
+  position: absolute;
+  font-weight: 600;
+  color: rgba(51, 204, 255, 0.7);
+  top: 15rpx;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: max-content;
+}
+
+.input {
+  position: relative;
+  left: 275rpx;
+  top: 280rpx;
+  width: 50vw;
+  display: flex;
+  flex-direction: row;
+}
+
+.input>input {
+  position: absolute;
+  height: 30px;
+  background: rgba(51, 204, 255, 0.5);
+  border-radius: 5px;
+  font-size: 12px;
+  width: 347rpx;
+  padding-left: 30rpx;
+  transition: 0.4s;
+  opacity: 1;
+  color: wheat;
+}
+
+.input>button {
+  position: absolute;
+  width: 50px;
+  font-size: 12px;
+  right: 0;
+  padding-left: 8px;
+  padding-right: 8px;
+  background: rgba(252, 126, 68, 0.7);
+  background-color: #3e515b;
+  color: wheat;
+  transition: 0.4s;
+  opacity: 1;
+  z-index: 2
+}
+

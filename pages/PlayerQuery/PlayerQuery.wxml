@@ -1,0 +1,7 @@
+<view class='bg'>
+  <ran-query-input class='ranInput' 
+  bindmyQuery="onQuery" 
+  bindmyQueryFocus="onQueryFocus"
+  style='top:{{myQueryTop}}rpx'></ran-query-input>
+</view>
+
