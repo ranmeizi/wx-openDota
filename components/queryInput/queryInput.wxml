@@ -7,7 +7,9 @@
   <view class="title">勇士联赛小助手</view>
   <!-- 输入框 -->
   <view class='input'>
-    <input type="text" confirm-type="search" bindinput="inputChange" bindfocus='focus'></input>
-    <button bindtap='query'>查询</button>
+    <input type="text" confirm-type="search" bindinput="inputChange" bindfocus='focus' bindconfirm="query"></input>
+    <view class='btn'>
+      <button bindtap='query'>查询</button>
+    </view>
   </view>
 </view>

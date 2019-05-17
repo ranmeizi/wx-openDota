@@ -2,7 +2,8 @@
   "pages": [
     "pages/PlayerQuery/PlayerQuery",
     "pages/AutoChess/AutoChess",
-    "pages/HeroData/HeroData"
+    "pages/HeroData/HeroData",
+    "pages/loading/loading"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -18,13 +19,15 @@
     "list": [
       {
         "pagePath": "pages/PlayerQuery/PlayerQuery",
-        "text": "搜索",
+        "text": "小助手",
         "iconPath": "images/PlayerQuery/icon/query.png",
         "selectedIconPath": "images/PlayerQuery/icon/querySel.png"
       },
       {
         "pagePath": "pages/HeroData/HeroData",
-        "text": "英雄资料"
+        "text": "英雄资料",
+        "iconPath": "images/HeroData/icon/hero.png",
+        "selectedIconPath": "images/HeroData/icon/heroSel.png"
       },
       {
         "pagePath": "pages/AutoChess/AutoChess",

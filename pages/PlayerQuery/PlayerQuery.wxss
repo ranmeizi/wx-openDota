@@ -26,3 +26,13 @@
   position: absolute;
   transition: 0.8s;
 }
+.infoPanel{
+  position: absolute;
+  width: 100%;
+  background-image: url('http://m.qpic.cn/psb?/V12yzkfP40OwEU/Q1XOQAOxlbPcG5so5WZ0Dzm6Q*pr6yNu84*NYWpojNM!/b/dL4AAAAAAAAA&bo=9AH8AgAAAAARBzs!&rf=viewer_4');
+  background-size: 100%;
+  transition: 0.8s;
+}
+.myHero{
+  padding: 2rpx
+}

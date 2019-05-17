@@ -49,6 +49,7 @@
   left: 275rpx;
   top: 280rpx;
   width: 50vw;
+  height: max-content;
   display: flex;
   flex-direction: row;
 }
@@ -66,11 +67,17 @@
   color: wheat;
 }
 
-.input>button {
+.input>.btn {
   position: absolute;
-  width: 50px;
-  font-size: 12px;
   right: 0;
+  height: 30px;
+  width: 40px;
+}
+
+.btn>button {
+  position: absolute;
+  font-size: 12px;
+  /* right: 0; */
   padding-left: 8px;
   padding-right: 8px;
   background: rgba(252, 126, 68, 0.7);
@@ -78,6 +85,19 @@
   color: wheat;
   transition: 0.4s;
   opacity: 1;
-  z-index: 2
+  z-index: 2;
 }
+
+.btn>.cd {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+
 

@@ -1,2 +1,48 @@
-<!--pages/AutoChess/AutoChess.wxml-->
-<text>pages/AutoChess/AutoChess.wxml</text>
+<view class="bg">
+  <!-- 视口 -->
+  <view class="view">
+    <!-- 棋盘 -->
+    <view class='chece'>
+      <view class='chessView'>
+        <view class="testChess {{zhuan?'active':''}}" style='top:{{position.y[row]}}vw;left:{{col*10}}vw;z-index:10;' bindanimationend="buzhuan">
+        </view>
+
+        <!-- 行 -->
+        <view wx:for="{{chece}}" wx:for-item="checeRowItem" wx:for-index="checeRowIndex">
+          <!-- 块 -->
+          <view class='checeItem' wx:for="{{checeRowItem}}" wx:for-item="checeItem" wx:for-index="checeIndex" style="background-color:{{(checeRowIndex+checeIndex)%2==1?'#f2f2f2':'#fff'}};transform:translate({{checeRowIndex*10}}vw,{{checeIndex*8}}vw)" data-col="{{checeRowIndex}}"
+            data-row="{{checeIndex}}" bindtap='te'></view>
+        </view>
+        <!-- 等待区 -->
+        <view style='transform:translateY(68vw)'>
+          <view wx:for="{{waitList}}" style="background-color:{{index%2==1?'#f2f2f2':'#fff'}};transform:translateX({{index*10}}vw)" class='checeItem'></view>
+        </view>
+        <!-- 测试棋子 -->
+
+
+
+      </view>
+    </view>
+  </view>
+</view>
+<button bindtap='zhuan' style='position:absolute;top:80vw'>转</button>
+<view style='position:absolute;top:90vw;'>
+  <button bindtap='zou' data-row="0" style='float:left'>1</button>
+  <button bindtap='zou' data-row="1" style='float:left'>2</button>
+  <button bindtap='zou' data-row="2" style='float:left'>3</button>
+  <button bindtap='zou' data-row="3" style='float:left'>4</button>
+  <button bindtap='zou' data-row="4" style='float:left'>5</button>
+  <button bindtap='zou' data-row="5" style='float:left'>6</button>
+  <button bindtap='zou' data-row="6" style='float:left'>7</button>
+  <button bindtap='zou' data-row="7" style='float:left'>8</button>
+</view>
+<view style='position:absolute;top:105vw;'>
+  <button bindtap='zou1' data-row="0" style='float:left'>1</button>
+  <button bindtap='zou1' data-row="1" style='float:left'>2</button>
+  <button bindtap='zou1' data-row="2" style='float:left'>3</button>
+  <button bindtap='zou1' data-row="3" style='float:left'>4</button>
+  <button bindtap='zou1' data-row="4" style='float:left'>5</button>
+  <button bindtap='zou1' data-row="5" style='float:left'>6</button>
+  <button bindtap='zou1' data-row="6" style='float:left'>7</button>
+  <button bindtap='zou1' data-row="7" style='float:left'>8</button>
+</view>

@@ -1,7 +1,142 @@
-<view class='bg'>
+<view class='bg' >
   <ran-query-input class='ranInput' 
-  bindmyQuery="onQuery" 
-  bindmyQueryFocus="onQueryFocus"
-  style='top:{{myQueryTop}}rpx'></ran-query-input>
+  bindtouchstart="touchstart" 
+  bindtouchend="touchend"
+  bindmyQuery="onQuery" bindmyQueryFocus="onQueryFocus" cooldown="20" style='top:{{myQueryTop}}rpx'></ran-query-input>
+  <!-- 下面的显示面板 -->
+  <view class="infoPanel" style='top:{{iPanelTop}}vh'>
+    <view wx:for="{{searchList}}" wx:for-item="qItem" class="cu-card case">
+      <view class="cu-item shadow">
+        <view class="cu-list menu-avatar">
+          <view class="cu-item flex justify-between " data-index="{{index}}" bindtap='showPlayers'>
+            <view class="cu-avatar round lg" style="background-image:url({{qItem.avatarfull}});"></view>
+            <view class="content flex-sub">
+              <view class="text-grey flex justify-start">
+                <!--玩家名称  -->
+                <view style='width:20vw;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;'>{{qItem.personaname}}</view>
+                <!-- 玩家ID -->
+                <view class="text-sm">ID:{{qItem.account_id}}</view>
+              </view>
+              <!-- 最近游戏日期 -->
+              <view class="text-gray text-sm flex justify-between">
+                <view>最近游戏日期：{{qItem.last_match_time}}</view>
+              </view>
+            </view>
+            <!-- 点击加载更多 -->
+            <view style='transition:0.4s;transform:rotateZ({{qItem.options.showPlayers?"90":"0"}}deg)'>
+              <text class="cuIcon-right lg text-gray"></text>
+            </view>
+          </view>
+          <!-- 更多内容--玩家信息 -->
+          <view class="cu-list menu-avatar comment solids-top" style="max-height:{{qItem.options.showPlayers?'max-content':'0'}}">
+            <view class="cu-item" style='padding-left:30rpx;justify-content:start'>
+              <view class="flex flex-direction">
+                <view wx:if="{{!qItem.players}}" class="cu-load loading" style='width:100%;'></view>
+                <view wx:else="{{qItem.players}}" class='flex justify-around'>
+                  <view class='flex flex-direction'>
+                    <ran-rankIcon rank_tier="{{qItem.players.rank_tier}}" style="height:60px;width:60px" />
+                    <!-- 胜率 -->
+                    <view class="text-gray text-sm">胜:{{qItem.players.exData.wl.win}}</view>
+                    <view class="text-gray text-sm">负:{{qItem.players.exData.wl.lose}}</view>
+                    <view class="text-gray text-sm">胜率:{{m1.toFixed((qItem.players.exData.wl.win*100)/(qItem.players.exData.wl.win+qItem.players.exData.wl.lose))}}%</view>
+
+                  </view>
+                  <view style="width:500rpx;margin-left:20rpx">
+                    <scroll-view scroll-x class="bg-white nav">
+                      <view class="flex text-center">
+                        <view class="cu-item flex-sub {{qItem.players.exData.TabCur=='heroes'?'text-blue cur':''}}" data-tab="heroes" data-index="{{index}}" bindtap='tabChange' style='height:60rpx;line-height:50rpx'>常用英雄</view>
+                        <view class="cu-item flex-sub {{qItem.players.exData.TabCur=='rankings'?'text-blue cur':''}}" data-tab="rankings" data-index="{{index}}" bindtap='tabChange' style='height:60rpx;line-height:50rpx'>高分英雄</view>
+                      </view>
+                    </scroll-view>
+                    <!-- 常用英雄 -->
+                    <view wx:if="{{qItem.players.exData.TabCur=='heroes'}}" style='padding:20rpx'>
+                      <view class="flex flex-direction">
+                        <view wx:for="{{qItem.players.exData.heroes}}" wx:for-item="heroItem" class='flex myHero'>
+                          <image src="https://api.opendota.com{{heroStats[heroItem.hero_id].img}}" mode="widthFix" style='width:150rpx'></image>
+                          <view class="flex flex-direction" style='margin-left:10rpx'>
+                            <!-- 场次/胜率 -->
+                            <view class='text-gray text-sm'>
+                              场次:{{heroItem.games}} 胜率:{{m1.toFixed(heroItem.win*100/heroItem.games)}}%
+                            </view>
+                            <!-- 游戏时间 -->
+                            <view class='text-gray text-sm'>
+                              上次使用:{{m1.findLastTime(heroItem.last_played)}}
+                            </view>
+                          </view>
+                        </view>
+
+                      </view>
+                    </view>
+                    <!-- 高分英雄 -->
+                    <view wx:if="{{qItem.players.exData.TabCur=='rankings'}}" style='padding:20rpx'>
+                      <view class="flex flex-direction">
+                        <view wx:for="{{qItem.players.exData.rankings}}" wx:for-item="rankItem" class='flex myHero'>
+                          <image src="https://api.opendota.com{{heroStats[rankItem.hero_id].img}}" mode="widthFix" style='width:150rpx'></image>
+                          <view class="flex flex-direction" style='margin-left:10rpx'>
+                            <!-- 英雄积分 -->
+                            <view class='text-gray text-sm'>
+                              英雄积分:{{m1.toFixed(rankItem.score)}}
+                            </view>
+                            <!-- 排名 -->
+                            <view class='text-gray text-sm'>
+                              全球排名:{{m1.rankRange((1-rankItem.percent_rank)*rankItem.card)}}~{{m1.rankRange((1-rankItem.percent_rank+0.0005)*rankItem.card)}}
+                            </view>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+
+
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
 
+<wxs module="m1">
+  module.exports = {
+    toFixed: toFixed,
+    rankRange: rankRange,
+    findLastTime: findLastTime
+  }
+
+  function toFixed(num) {
+    return num.toFixed(2)
+  }
+
+  function rankRange(num) {
+    return parseInt(num)
+  }
+
+  function findLastTime(last_played) {
+    var time = Date.now() / 1000 - last_played
+
+    var year = parseInt(time / 60 / 60 / 24 / 30 / 12)
+    if (year != 0) {
+      return year + " 年之前"
+    }
+    var month = parseInt(time / 60 / 60 / 24 / 30) % 12
+    if (month != 0) {
+      return month + " 个月之前"
+    }
+    var day = parseInt(time / 60 / 60 / 24) % 30
+    if (day != 0) {
+      return day + " 天之前"
+    }
+    var hour = parseInt(time / 60 / 60) % 24
+    if (hour != 0) {
+      return hour + " 小时之前"
+    }
+    var min = parseInt(time / 60) % 60
+    if (min != 0) {
+      return min + " 分钟之前"
+    }
+    var sec = time % 60
+    return sec + " 秒之前"
+  }
+</wxs>

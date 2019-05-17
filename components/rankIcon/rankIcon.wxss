@@ -2,15 +2,17 @@
 
 .rank {
   position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 .rank>view {
   position: absolute;
   top: 0;
   left: 0;
-  height: 50vw;
-  width: 50vw;
-    background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
   background-size: 100%;
 }
 

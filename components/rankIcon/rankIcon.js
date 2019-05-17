@@ -14,8 +14,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    rankIcon:0,
-    rankStar:0
+    rankIcon:"0",
+    rankStar:"0"
   },
 
   /**
@@ -25,9 +25,20 @@ Component({
 
   },
   attached(){
+    let rankIcon 
+    let rankStar 
+    try{
+      rankIcon = this.data.rank_tier? this.data.rank_tier[0]+"":"0"
+      rankStar = this.data.rank_tier? this.data.rank_tier[1]+"":"0"
+    }
+    catch(e){
+      rankIcon = "0"
+      rankStar = "0"
+    }
+    
     this.setData({
-      rankIcon: this.data.rank_tier[0],
-      rankStar: this.data.rank_tier[1]
+      rankIcon,
+      rankStar
     })
   }
 })

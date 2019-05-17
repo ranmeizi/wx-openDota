@@ -4,14 +4,18 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    "cooldown":{
+      type:Number,
+      value:20
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    inputValue:""
+    inputValue:"",
+    cd:true
   },
 
   /**

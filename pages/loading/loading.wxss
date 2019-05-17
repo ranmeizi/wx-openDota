@@ -1,0 +1,7 @@
+/* pages/loading/loading.wxss */
+.bg{
+  background-image: url('http://m.qpic.cn/psb?/V12yzkfP40OwEU/Q.jObsaWvhCDMF7Q0kkXZQDP2UmO30ReAQPqDg2wms4!/b/dL8AAAAAAAAA&bo=dwGbAgAAAAARB98!&rf=viewer_4');
+  background-size: 100%;
+  height: 100vh;
+  width: 100vw;
+}

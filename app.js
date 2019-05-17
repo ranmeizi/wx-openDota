@@ -46,6 +46,7 @@ App({
   openApiProxy:new Proxy(openApi,{
     apply(...arg){
       //计数
+      
       return Reflect.apply(...arg)
     }
   })

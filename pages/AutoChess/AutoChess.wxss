@@ -1,1 +1,60 @@
 /* pages/AutoChess/AutoChess.wxss */
+.bg {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('http://m.qpic.cn/psb?/V12yzkfP40OwEU/Q1XOQAOxlbPcG5so5WZ0Dzm6Q*pr6yNu84*NYWpojNM!/b/dL4AAAAAAAAA&bo=9AH8AgAAAAARBzs!&rf=viewer_4');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.view{
+  position: absolute;
+  top: 0;
+  width: max-content;
+  left: 0;
+  right:0;
+  margin: 0 auto;
+  perspective:500px;
+  z-index: 10;
+}
+.chece{
+  position: relative;
+  height: 76vw;
+  width:80vw;
+  transform:rotateX(30deg);
+  
+}
+.checeItem{
+  position: absolute;
+  height: 8vw;
+  width: 10vw;
+  opacity: 0.5
+}
+.chessView{
+  height: 76vw;
+  width:80vw;
+  perspective:500px;
+}
+.testChess{
+  position: absolute;
+  top: 49vw;
+  left: 0;
+  height: 13vw;
+  width: 10vw;
+  background-image: url('https://api.opendota.com/apps/dota2/images/heroes/antimage_icon.png');
+  background-size: 10vw 13vw;
+  transform: rotateX(-45deg);
+  
+  transition:2s
+}
+.testChess.active{
+  animation: zhuan 0.5s 2 linear;
+}
+
+@keyframes zhuan{
+  from{
+    transform: rotateX(-45deg) rotateY(0)
+  }to{
+    transform: rotateX(-45deg) rotateY(180deg)
+  }
+}
