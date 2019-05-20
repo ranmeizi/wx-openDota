@@ -1,0 +1,60 @@
+<view class="cu-bar bg-white search fixed" style="">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="输入昵称/ID/比赛编号" confirm-type="search" bindinput="inputChange" bindfocus='iptFcs' bindconfirm="query" value="{{q}}"></input>
+  </view>
+  <view class="action">
+    <button class="cu-btn bg-black shadow-blur round" bindtap='query'>搜索</button>
+  </view>
+</view>
+<!-- 玩家名卡片 -->
+<scroll-view scroll-y class="indexes" style="height:calc(100vh - 42px);margin-top:42px;" wx:if="{{searchList.length>0}}">
+  <block>
+    <view class="padding indexItem-{{list[index]}}" id="indexes-{{list[index]}}" data-index="{{list[index]}}">玩家({{searchList.length}})</view>
+    <view class="cu-list menu no-padding">
+      <view wx:for="{{searchList}}" wx:for-item="qItem" class="cu-card case no-card" style='margin-bottom:6rpx'>
+        <view class="cu-item shadow">
+          <view class="cu-list menu-avatar">
+            <view class="cu-item flex justify-between " data-index="{{index}}" bindtap='navigate'>
+              <view class="cu-avatar round lg" style="background-image:url({{qItem.avatarfull}});"></view>
+              <view class="content flex-sub">
+                <view class="text-grey flex justify-start">
+                  <!--玩家名称  -->
+                  <view style='width:20vw;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;'>{{qItem.personaname}}</view>
+                  <!-- 玩家ID -->
+                  <view class="text-sm">ID:{{qItem.account_id}}</view>
+                </view>
+                <!-- 最近游戏日期 -->
+                <view class="text-gray text-sm flex justify-between">
+                  <view>最近游戏日期：{{qItem.last_match_time}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+
+<!-- 搜索历史 -->
+<scroll-view scroll-y class="indexes" style="height:calc(100vh - 42px);margin-top:42px;" wx:if="{{historyQuery.length>0&&showHistory}}">
+  <block>
+    <view class="padding indexItem-{{list[index]}}" id="indexes-{{list[index]}}" data-index="{{list[index]}}">搜索历史({{historyQuery.length}})</view>
+    <view class="cu-list menu no-padding">
+      <view class="cu-item" wx:for="{{historyQuery}}">
+        <view class="content" bindtap='hisQuery' data-q="{{item}}">
+          <view class='flex justify-between'>
+            <text>{{item}}</text>
+            <text class='cuIcon-close lg text-gray' catchtap='delHistory' data-index="{{index}}" style='padding:25rpx'></text>
+          </view>
+        </view>
+      </view>
+      <view class="cu-item bg-grey light" style='background-color: #f4f4f4' bindtap='delAllHistory'>
+        <view class="content flex justify-center">
+          <text><text class="cuIcon-delete lg text-gray"></text>清空历史记录</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</scroll-view>

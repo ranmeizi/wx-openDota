@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "ran-recentMatches":"../../components/Player/RecentMatches/RecentMatches",
+    "ran-heroes": "../../components/Player/Heroes/Heroes",
+    "ran-totals": "../../components/Player/Totals/Totals",
+    "ran-peers": "../../components/Player/Peers/Peers"
+  }
+}

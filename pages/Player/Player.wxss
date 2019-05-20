@@ -1,0 +1,26 @@
+/* pages/Player/Player.wxss */
+
+#Ztab cu-item {
+  height: 50rpx;
+  line-height: 50rpx;
+  color: white;
+  border: none;
+}
+
+.sanjiao {
+  width: 25vw;
+  position: absolute;
+  bottom: 40rpx;
+  display: flex;
+  justify-content: center;
+  transition: 0.15s linear 
+}
+
+.sanjiao>view {
+  height: 0;
+  width: 0;
+  border-top: 0px solid black;
+  border-bottom: 16rpx solid #f2f2f2;
+  border-left: 16rpx solid transparent;
+  border-right: 16rpx solid transparent;
+}

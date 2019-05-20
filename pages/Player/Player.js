@@ -1,46 +1,63 @@
-// pages/HeroData/HeroData.js
+// pages/Player/Player.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    num:1
+    TabCur:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("onLoad:"+this.data.num)
+    let {account_id}=options
+    wx.showLoading({
+      title: '加载中...',
+    })
+    //获取player接口数据
+    app.openApiProxy({
+      aName: "players",
+      args: {
+        account_id
+      }
+    }).then(res=>{
+      wx.hideLoading()
+      this.setData({
+        player: res
+      })
+    })
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log("onReady:" + this.data.num)
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log("onShow:" + this.data.num)
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    console.log("onHide:" + this.data.num)
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    console.log("onUnload:" + this.data.num)
+
   },
 
   /**
@@ -62,5 +79,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  tabSelect(e){
+    this.setData({
+      TabCur:e.currentTarget.dataset.id
+    })
   }
 })

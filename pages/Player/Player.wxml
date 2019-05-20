@@ -1,0 +1,58 @@
+<!--pages/Player/Player.wxml-->
+<!-- 头，正中间头像和玩家名id -->
+<view class="cu-card case no-card">
+  <view class="cu-item shadow ">
+    <view class="cu-list flex justify-center bg-dota-black">
+      <view class="cu-avatar round lg" style="background-image:url({{player.profile.avatarfull}});height:120rpx;width:120rpx"></view>
+    </view>
+    <view class="cu-list bg-dota-black" style='margin-top:0;padding:10rpx;text-align:center;'>
+      <view class="cu-item ">
+        <view class="content flex-direction align-center">
+          <view style='color:white'>{{player.profile.personaname}}</view>
+          <view class="text-grey">ID:{{player.profile.account_id}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- tab栏 -->
+<scroll-view scroll-x class="bg-dota-black nav" id="Ztab" style='position:relative'>
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{TabCur==0?'text-white':'text-gray'}}" bindtap="tabSelect" data-id="0">
+      近期比赛
+    </view>
+    <view class="cu-item flex-sub {{TabCur==1?'text-white':'text-gray'}}" bindtap="tabSelect" data-id="1">
+      英雄
+    </view>
+    <view class="cu-item flex-sub {{TabCur==2?'text-white':'text-gray'}}" bindtap="tabSelect" data-id="2">
+      最高记录
+    </view>
+    <view class="cu-item flex-sub {{TabCur==3?'text-white':'text-gray'}}" bindtap="tabSelect" data-id="3">
+      队友对手
+    </view>
+  </view>
+  <!-- 小箭头 -->
+  <view class="sanjiao" style='transform:translateX({{TabCur*25}}vw)'>
+    <view >
+
+    </view>
+  </view>
+
+</scroll-view>
+<!-- router-view -->
+<swiper current="{{TabCur}}">
+  <block>
+    <swiper-item>
+      <ran-recentMatches></ran-recentMatches>
+    </swiper-item>
+    <swiper-item>
+      <ran-heroes></ran-heroes>
+    </swiper-item>
+    <swiper-item>
+      <ran-totals></ran-totals>
+    </swiper-item>
+    <swiper-item>
+      <ran-peers></ran-peers>
+    </swiper-item>
+  </block>
+</swiper>
