@@ -1,10 +1,13 @@
 /* pages/Player/Player.wxss */
 
-#Ztab cu-item {
-  height: 50rpx;
-  line-height: 50rpx;
-  color: white;
+#Ztab .cu-item {
+  height: 60rpx;
+  line-height: 60rpx;
+  color: gray;
   border: none;
+}
+#Ztab .cu-item.cur{
+  color: white;
 }
 
 .sanjiao {
@@ -20,7 +23,7 @@
   height: 0;
   width: 0;
   border-top: 0px solid black;
-  border-bottom: 16rpx solid #f2f2f2;
-  border-left: 16rpx solid transparent;
-  border-right: 16rpx solid transparent;
+  border-bottom: 14rpx solid #f2f2f2;
+  border-left: 14rpx solid transparent;
+  border-right: 14rpx solid transparent;
 }

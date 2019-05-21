@@ -1,2 +1,176 @@
-<!--components/Player/RecentMatches/RecentMatches.wxml-->
-<text>components/Player/RecentMatches/RecentMatches.wxml</text>
+<scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - 116px)" scroll-with-animation="true" enable-back-to-top="true">
+  <block>
+    <view class="padding-sm">
+      <text class='cuIcon-card sm'></text>综合统计</view>
+
+    <view class="zcr cu-list grid col-4 gridBorder">
+      <!-- 总场次 -->
+      <view class="cu-item flex-direction align-center">
+        <text class='ying you hei'>{{playersWl.win+playersWl.lose}}</text>
+        <text>总场次</text>
+      </view>
+      <!-- kda -->
+      <view class="cu-item flex-direction align-center">
+        <text class='ying you hei'>{{filter.toFixed((playersTotalsAll[3].sum/playersTotalsAll[3].n),2)}}</text>
+        <text>KDA</text>
+      </view>
+      <!-- 总胜率 -->
+      <view class="cu-item flex-direction align-center">
+        <text class='ying you hei'>{{filter.toFixed((playersWl.win*100/(playersWl.win+playersWl.lose)),1)}}%</text>
+        <text>总胜率</text>
+      </view>
+      <!-- 天梯段位 -->
+      <view class="cu-item flex-direction align-center">
+        <view style='height:100rpx;width:100rpx' wx:if="{{player}}">
+          <ran-rankIcon rank_tier="{{filter.toString(player.rank_tier)}}"></ran-rankIcon>
+        </view>
+      </view>
+    </view>
+    <!-- 详情 -->
+    <view class="zcr cu-list grid col-4 gridBorder" style='margin-top:0;transition:0.3s;height:{{downList?"200px":"0"}};overflow:hidden'>
+      <!-- 天梯胜率 -->
+      <view class="cu-item flex-direction align-center">
+        <text>{{playersWl.win+playersWl.lose}}</text>
+        <text>天梯胜率</text>
+      </view>
+      <!-- 场均击杀 -->
+      <view class="cu-item flex-direction align-center">
+        <text>{{filter.toFixed((playersTotalsAll[0].sum/playersTotalsAll[0].n),2)}}</text>
+        <text>场均击杀</text>
+      </view>
+      <!-- 场均死亡 -->
+      <view class="cu-item flex-direction align-center">
+        <text>{{filter.toFixed((playersTotalsAll[1].sum/playersTotalsAll[1].n),2)}}</text>
+        <text>场均死亡</text>
+      </view>
+       <!-- 场均助攻 -->
+      <view class="cu-item flex-direction align-center">
+        <text>{{filter.toFixed((playersTotalsAll[2].sum/playersTotalsAll[2].n),2)}}</text>
+        <text>场均助攻</text>
+      </view>
+      <!-- 场均GPM -->
+      <view class="cu-item flex-direction align-center">
+        <text>{{filter.toFixed((playersTotalsAll[4].sum/playersTotalsAll[4].n),2)}}</text>
+        <text>场均GPM</text>
+      </view>
+      <!-- 场均XPM -->
+      <view class="cu-item flex-direction align-center">
+        <text>{{filter.toFixed((playersTotalsAll[5].sum/playersTotalsAll[5].n),2)}}</text>
+        <text>场均XPM</text>
+      </view>
+      <!-- 场均正补 -->
+      <view class="cu-item flex-direction align-center">
+        <text>{{filter.toFixed((playersTotalsAll[6].sum/playersTotalsAll[6].n),2)}}</text>
+        <text>场均正补</text>
+      </view>
+       <!-- 场均反补 -->
+      <view class="cu-item flex-direction align-center">
+        <text>{{filter.toFixed((playersTotalsAll[7].sum/playersTotalsAll[7].n),2)}}</text>
+        <text>场均反补</text>
+      </view>
+       <!-- 场均伤害 -->
+      <view class="cu-item flex-direction align-center">
+        <text>{{filter.toFixed((playersTotalsAll[11].sum/playersTotalsAll[11].n),2)}}</text>
+        <text>场均伤害</text>
+      </view>
+      <!-- 场均治疗 -->
+      <view class="cu-item flex-direction align-center">
+        <text>{{filter.toFixed((playersTotalsAll[13].sum/playersTotalsAll[13].n),2)}}</text>
+        <text>场均治疗</text>
+      </view>
+       <!-- 场均建筑伤害 -->
+      <view class="cu-item flex-direction align-center">
+        <text>{{filter.toFixed((playersTotalsAll[12].sum/playersTotalsAll[12].n),2)}}</text>
+        <text>场均建筑伤害</text>
+      </view>
+    </view>
+    <!-- 显示详情按钮 -->
+    <view>
+      <view class='flex justify-center padding-xs' bindtap='clk'>
+        <text>{{downList?'收起':'详情'}}</text>
+        <text class="{{downList?'cuIcon-fold':'cuIcon-unfold'}}"></text>
+      </view>
+    </view>
+
+  </block>
+  <block>
+    <view class="padding-sm"><text class='cuIcon-card sm'></text>最近比赛</view>
+    <view class="cu-list menu-avatar">
+      <view class="cu-item" wx:for="{{playersRecentMatches}}" wx:for-item="matchItem">
+        <view class="cu-avatar round lg" style="background-image:url('https://api.opendota.com{{heroStats[matchItem.hero_id].img}}');"></view>
+        <view class="content flex-sub">
+          <!-- 结果 -->
+          <view></view>
+          <!-- level -->
+          <view></view>
+          <!-- 结束时间 -->
+          <view></view>
+          <!-- K/D/A -->
+          <view></view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block>
+    <view class="padding-sm">
+      <text class='cuIcon-github sm'></text>常用英雄</view>
+    <view class="cu-list menu-avatar no-padding">
+      <view class="cu-item" wx:for="{{2}}" wx:key wx:for-index="sub">
+        <view class="cu-avatar round lg">{{list[index]}}</view>
+        <view class="content">
+          <view class="text-grey">{{list[index]}}
+            <text class="text-abc">{{list[sub]}}</text>君</view>
+          <view class="text-gray text-sm">
+            有{{sub+2}}个主子需要伺候
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block>
+    <view class="padding-sm">
+      <text class='cuIcon-settingsfill sm'></text>雷达图</view>
+    <view class="cu-list menu-avatar no-padding">
+      <view class="cu-item" wx:for="{{2}}" wx:key wx:for-index="sub">
+        <view class="cu-avatar round lg">{{list[index]}}</view>
+        <view class="content">
+          <view class="text-grey">{{list[index]}}
+            <text class="text-abc">{{list[sub]}}</text>君</view>
+          <view class="text-gray text-sm">
+            有{{sub+2}}个主子需要伺候
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block>
+    <view class="padding-sm">
+      <text class='cuIcon-rankfill sm'></text>全部比赛统计</view>
+    <view class="cu-list menu-avatar no-padding">
+      <view class="cu-item" wx:for="{{2}}" wx:key wx:for-index="sub">
+        <view class="cu-avatar round lg">{{list[index]}}</view>
+        <view class="content">
+          <view class="text-grey">{{list[index]}}
+            <text class="text-abc">{{list[sub]}}</text>君</view>
+          <view class="text-gray text-sm">
+            有{{sub+2}}个主子需要伺候
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+
+<wxs module="filter">
+  module.exports = {
+    toFixed: toFixed,
+    toString:toString
+  }
+
+  function toFixed(a, b) {
+    return a.toFixed(b)
+  }
+  function toString(a) {
+    return a+""
+  }
+</wxs>

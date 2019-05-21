@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "ran-rankIcon": "../../../components/rankIcon/rankIcon"
+  }
 }

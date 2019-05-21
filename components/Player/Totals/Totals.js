@@ -18,6 +18,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
-  }
+    checkData() {
+      console.log("total看到啦")
+    }
+  },
+  
 })

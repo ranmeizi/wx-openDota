@@ -1,1 +1,8 @@
 /* components/Player/RecentMatches/RecentMatches.wxss */
+.cu-item>.ying.you.hei{
+  font-size: 32rpx;
+  color: black
+}
+.cu-list.zcr.grid>.cu-item{
+  padding:8rpx 0 8rpx
+}

@@ -52,6 +52,22 @@ function getReq(aName, args) {
     url = `https://api.opendota.com/api/players/${args.account_id}/totals`
     data = args
   }
+  //玩家最近比赛
+  else if (aName == "playersRecentMatches") {
+    url = `https://api.opendota.com/api/players/${args.account_id}/recentMatches`
+  }
+  //队友对手
+  else if (aName == "playersPeers") {
+    url = `https://api.opendota.com/api/players/${args.account_id}/peers`
+  }
+  //职业选手
+  else if (aName == "playersPros") {
+    url = `https://api.opendota.com/api/players/${args.account_id}/pros`
+  }
+  //天梯分趋势
+  else if (aName == "playersRatings") {
+    url = `https://api.opendota.com/api/players/${args.account_id}/ratings`
+  }
   //英雄信息：英雄属性/英雄头像。。。
   else if (aName == "heroStats") {
     url = 'https://api.opendota.com/api/heroStats'

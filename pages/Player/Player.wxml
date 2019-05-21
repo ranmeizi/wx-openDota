@@ -18,16 +18,16 @@
 <!-- tab栏 -->
 <scroll-view scroll-x class="bg-dota-black nav" id="Ztab" style='position:relative'>
   <view class="flex text-center">
-    <view class="cu-item flex-sub {{TabCur==0?'text-white':'text-gray'}}" bindtap="tabSelect" data-id="0">
-      近期比赛
+    <view class="cu-item flex-sub {{TabCur==0?'text-white cur':'text-gray'}}" bindtap="tabSelect" data-id="0">
+      综合统计
     </view>
-    <view class="cu-item flex-sub {{TabCur==1?'text-white':'text-gray'}}" bindtap="tabSelect" data-id="1">
-      英雄
+    <view class="cu-item flex-sub {{TabCur==1?'text-white cur':'text-gray'}}" bindtap="tabSelect" data-id="1">
+      英雄排名
     </view>
-    <view class="cu-item flex-sub {{TabCur==2?'text-white':'text-gray'}}" bindtap="tabSelect" data-id="2">
-      最高记录
+    <view class="cu-item flex-sub {{TabCur==2?'text-white cur':'text-gray'}}" bindtap="tabSelect" data-id="2">
+      数据统计
     </view>
-    <view class="cu-item flex-sub {{TabCur==3?'text-white':'text-gray'}}" bindtap="tabSelect" data-id="3">
+    <view class="cu-item flex-sub {{TabCur==3?'text-white cur':'text-gray'}}" bindtap="tabSelect" data-id="3">
       队友对手
     </view>
   </view>
@@ -40,19 +40,24 @@
 
 </scroll-view>
 <!-- router-view -->
-<swiper current="{{TabCur}}">
+<swiper current="{{TabCur}}" style='height:calc(100vh - 116px)' bindchange="change">
   <block>
     <swiper-item>
-      <ran-recentMatches></ran-recentMatches>
+      <ran-recentMatches account_id="{{account_id}}" 
+      playersWl="{{playersWl}}" playersTotalsAll="{{playersTotalsAll}}" playersRecentMatches="{{playersRecentMatches}}"
+      playersRankings="{{playersRankings}}" player="{{player}}"
+      ></ran-recentMatches>
     </swiper-item>
     <swiper-item>
-      <ran-heroes></ran-heroes>
+      <ran-heroes account_id="{{account_id}}" playersRankings="{{playersRankings}}"></ran-heroes>
     </swiper-item>
     <swiper-item>
-      <ran-totals></ran-totals>
+      <ran-totals account_id="{{account_id}}" playersTotals100="{{playersTotals100}}"
+      playersTotals20="{{playersTotals20}}" playersRatings="{{playersRatings}}"
+      ></ran-totals>
     </swiper-item>
     <swiper-item>
-      <ran-peers></ran-peers>
+      <ran-peers account_id="{{account_id}}" playersPeers="{{playersPeers}}" playersPros="{{playersPros}}"></ran-peers>
     </swiper-item>
   </block>
 </swiper>
