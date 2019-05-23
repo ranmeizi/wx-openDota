@@ -1,4 +1,8 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "ran-leidatu":"leidatu/leidatu",
+    "ran-tiantitu": "tiantitu/tiantitu",
+    "ran-loading":"../../loading/loading"
+  }
 }

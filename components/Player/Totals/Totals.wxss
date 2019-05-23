@@ -1,1 +1,17 @@
 /* components/Player/Totals/Totals.wxss */
+.datasel>view{
+  border: 1rpx solid #999;
+  height:40rpx;
+  width: 80rpx;
+  line-height: 40rpx;
+  border-radius: 20rpx;
+  background-color: transparent;
+  box-sizing: border-box;
+  text-align: center;
+  margin-right:10rpx;
+  font-size: 22rpx; 
+}
+.datasel>view.active{
+  border: 1rpx solid #fff;
+  background-color: #fff
+}

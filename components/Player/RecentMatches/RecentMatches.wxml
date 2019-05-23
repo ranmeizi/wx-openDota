@@ -1,6 +1,6 @@
-<scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - 116px)" scroll-with-animation="true" enable-back-to-top="true">
+<scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - 264rpx)" scroll-with-animation="true" enable-back-to-top="true">
   <block>
-    <view class="padding-sm">
+    <view class="padding-sm" style='background:#ddd'>
       <text class='cuIcon-card sm'></text>综合统计</view>
 
     <view class="zcr cu-list grid col-4 gridBorder">
@@ -35,52 +35,52 @@
       </view>
       <!-- 场均击杀 -->
       <view class="cu-item flex-direction align-center">
-        <text>{{filter.toFixed((playersTotalsAll[0].sum/playersTotalsAll[0].n),2)}}</text>
+        <text>{{filter.toFixed((playersTotalsAll[0].sum/playersTotalsAll[0].n),1)}}</text>
         <text>场均击杀</text>
       </view>
       <!-- 场均死亡 -->
       <view class="cu-item flex-direction align-center">
-        <text>{{filter.toFixed((playersTotalsAll[1].sum/playersTotalsAll[1].n),2)}}</text>
+        <text>{{filter.toFixed((playersTotalsAll[1].sum/playersTotalsAll[1].n),1)}}</text>
         <text>场均死亡</text>
       </view>
-       <!-- 场均助攻 -->
+      <!-- 场均助攻 -->
       <view class="cu-item flex-direction align-center">
-        <text>{{filter.toFixed((playersTotalsAll[2].sum/playersTotalsAll[2].n),2)}}</text>
+        <text>{{filter.toFixed((playersTotalsAll[2].sum/playersTotalsAll[2].n),1)}}</text>
         <text>场均助攻</text>
       </view>
       <!-- 场均GPM -->
       <view class="cu-item flex-direction align-center">
-        <text>{{filter.toFixed((playersTotalsAll[4].sum/playersTotalsAll[4].n),2)}}</text>
+        <text>{{filter.toFixed((playersTotalsAll[4].sum/playersTotalsAll[4].n),1)}}</text>
         <text>场均GPM</text>
       </view>
       <!-- 场均XPM -->
       <view class="cu-item flex-direction align-center">
-        <text>{{filter.toFixed((playersTotalsAll[5].sum/playersTotalsAll[5].n),2)}}</text>
+        <text>{{filter.toFixed((playersTotalsAll[5].sum/playersTotalsAll[5].n),1)}}</text>
         <text>场均XPM</text>
       </view>
       <!-- 场均正补 -->
       <view class="cu-item flex-direction align-center">
-        <text>{{filter.toFixed((playersTotalsAll[6].sum/playersTotalsAll[6].n),2)}}</text>
+        <text>{{filter.toFixed((playersTotalsAll[6].sum/playersTotalsAll[6].n),1)}}</text>
         <text>场均正补</text>
       </view>
-       <!-- 场均反补 -->
+      <!-- 场均反补 -->
       <view class="cu-item flex-direction align-center">
-        <text>{{filter.toFixed((playersTotalsAll[7].sum/playersTotalsAll[7].n),2)}}</text>
+        <text>{{filter.toFixed((playersTotalsAll[7].sum/playersTotalsAll[7].n),1)}}</text>
         <text>场均反补</text>
       </view>
-       <!-- 场均伤害 -->
+      <!-- 场均伤害 -->
       <view class="cu-item flex-direction align-center">
-        <text>{{filter.toFixed((playersTotalsAll[11].sum/playersTotalsAll[11].n),2)}}</text>
+        <text>{{filter.toFixed((playersTotalsAll[11].sum/playersTotalsAll[11].n),1)}}</text>
         <text>场均伤害</text>
       </view>
       <!-- 场均治疗 -->
       <view class="cu-item flex-direction align-center">
-        <text>{{filter.toFixed((playersTotalsAll[13].sum/playersTotalsAll[13].n),2)}}</text>
+        <text>{{filter.toFixed((playersTotalsAll[13].sum/playersTotalsAll[13].n),1)}}</text>
         <text>场均治疗</text>
       </view>
-       <!-- 场均建筑伤害 -->
+      <!-- 场均建筑伤害 -->
       <view class="cu-item flex-direction align-center">
-        <text>{{filter.toFixed((playersTotalsAll[12].sum/playersTotalsAll[12].n),2)}}</text>
+        <text>{{filter.toFixed((playersTotalsAll[12].sum/playersTotalsAll[12].n),1)}}</text>
         <text>场均建筑伤害</text>
       </view>
     </view>
@@ -94,83 +94,164 @@
 
   </block>
   <block>
-    <view class="padding-sm"><text class='cuIcon-card sm'></text>最近比赛</view>
+    <view class="padding-sm" style='background:#ddd'>
+      <text class='cuIcon-card sm'></text>最近比赛</view>
     <view class="cu-list menu-avatar">
-      <view class="cu-item" wx:for="{{playersRecentMatches}}" wx:for-item="matchItem">
-        <view class="cu-avatar round lg" style="background-image:url('https://api.opendota.com{{heroStats[matchItem.hero_id].img}}');"></view>
-        <view class="content flex-sub">
+      <view class="cu-item" style="height:60rpx">
+        <view class="zcrRecent">
+          <view class='zcrRecent-item'>
+            英雄
+          </view>
+          <view class='zcrRecent-item'>
+            结果
+          </view>
+          <view class='zcrRecent-item'>
+            Level
+          </view>
+          <view class='zcrRecent-item'>
+            游戏时间
+          </view>
+          <view class='zcrRecent-item'>
+            K/D/A
+          </view>
+        </view>
+      </view>
+      <view class="cu-item" wx:for="{{filter.slice(playersRecentMatches,0,5)}}" wx:for-item="matchItem">
+        <view class="zcrRecent">
+          <view class="cu-avatar round lg zcrRecent-item" style="background-image:url('https://api.opendota.com{{heroStats[matchItem.hero_id].img}}');"></view>
           <!-- 结果 -->
-          <view></view>
-          <!-- level -->
-          <view></view>
-          <!-- 结束时间 -->
-          <view></view>
-          <!-- K/D/A -->
-          <view></view>
-        </view>
-      </view>
-    </view>
-  </block>
-  <block>
-    <view class="padding-sm">
-      <text class='cuIcon-github sm'></text>常用英雄</view>
-    <view class="cu-list menu-avatar no-padding">
-      <view class="cu-item" wx:for="{{2}}" wx:key wx:for-index="sub">
-        <view class="cu-avatar round lg">{{list[index]}}</view>
-        <view class="content">
-          <view class="text-grey">{{list[index]}}
-            <text class="text-abc">{{list[sub]}}</text>君</view>
-          <view class="text-gray text-sm">
-            有{{sub+2}}个主子需要伺候
+          <view class='zcrRecent-item shengfu' style="background-color:{{(matchItem.player_slot<128&&matchItem.radiant_win)||(matchItem.player_slot>=128&&!matchItem.radiant_win)? 'green': 'gray'}}">{{(matchItem.player_slot<128&&matchItem.radiant_win)||(matchItem.player_slot>=128&&!matchItem.radiant_win)? "胜": "负"}}</view>
+              <!-- level -->
+              <view class='zcrRecent-item'>
+                <!-- 游戏level -->
+                <text>{{filter.skill(matchItem.skill)}}</text>
+                <!-- 游戏模式 -->
+                <text>{{filter.game_mode(matchItem.game_mode)}}</text>
+              </view>
+              <!-- 结束时间 -->
+              <view class='zcrRecent-item'>
+                <!-- 时间 -->
+                <text>{{filter.findLastTime(matchItem.start_time)}}</text>
+                <!-- 时长 -->
+                <text>{{filter.dur(matchItem.duration)}}</text>
+              </view>
+              <!-- K/D/A -->
+              <view class='zcrRecent-item'>
+                <!-- kda -->
+                <text>{{filter.toFixed((matchItem.kills+matchItem.assists)/matchItem.deaths,1)}}</text>
+                <!-- K/D/A -->
+                <text>{{matchItem.kills}}/{{matchItem.deaths}}/{{matchItem.assists}}</text>
+              </view>
           </view>
         </view>
       </view>
-    </view>
-  </block>
-  <block>
-    <view class="padding-sm">
-      <text class='cuIcon-settingsfill sm'></text>雷达图</view>
-    <view class="cu-list menu-avatar no-padding">
-      <view class="cu-item" wx:for="{{2}}" wx:key wx:for-index="sub">
-        <view class="cu-avatar round lg">{{list[index]}}</view>
-        <view class="content">
-          <view class="text-grey">{{list[index]}}
-            <text class="text-abc">{{list[sub]}}</text>君</view>
-          <view class="text-gray text-sm">
-            有{{sub+2}}个主子需要伺候
-          </view>
+      <!-- 查看全部 -->
+      <view>
+        <view class='flex justify-end padding-xs'>
+          <text>查看全部</text>
+          <text class="cuIcon-right"></text>
         </view>
       </view>
-    </view>
-  </block>
-  <block>
-    <view class="padding-sm">
-      <text class='cuIcon-rankfill sm'></text>全部比赛统计</view>
-    <view class="cu-list menu-avatar no-padding">
-      <view class="cu-item" wx:for="{{2}}" wx:key wx:for-index="sub">
-        <view class="cu-avatar round lg">{{list[index]}}</view>
-        <view class="content">
-          <view class="text-grey">{{list[index]}}
-            <text class="text-abc">{{list[sub]}}</text>君</view>
-          <view class="text-gray text-sm">
-            有{{sub+2}}个主子需要伺候
-          </view>
-        </view>
-      </view>
-    </view>
   </block>
 </scroll-view>
 
 <wxs module="filter">
   module.exports = {
     toFixed: toFixed,
-    toString:toString
+    toString: toString,
+    slice: slice,
+    findLastTime: findLastTime,
+    skill: skill,
+    game_mode: game_mode,
+    dur: dur
   }
 
   function toFixed(a, b) {
     return a.toFixed(b)
   }
+
   function toString(a) {
-    return a+""
+    return a + ""
+  }
+
+  function slice(arr, start, end) {
+    return arr.slice(start, end)
+  }
+
+  function skill(a) {
+    switch (a) {
+      case 1:
+        return 'Normal';
+      case 2:
+        return 'High';
+      case 3:
+        return 'Very High';
+      default:
+        return '联赛'
+    }
+  }
+
+  function game_mode(a) {
+    switch (a) {
+      case 2:
+        return '队长模式';
+      case 22:
+        return '全英雄选择';
+      case 3:
+        return '随机征召';
+         case 4:
+        return '个别征召';
+      default:
+        return 'unknown'
+    }
+  }
+
+  function findLastTime(last_played) {
+    var time = Date.now() / 1000 - last_played
+
+    var year = parseInt(time / 60 / 60 / 24 / 30 / 12)
+    if (year != 0) {
+      return year + " 年之前"
+    }
+    var month = parseInt(time / 60 / 60 / 24 / 30) % 12
+    if (month != 0) {
+      return month + " 个月之前"
+    }
+    var day = parseInt(time / 60 / 60 / 24) % 30
+    if (day != 0) {
+      return day + " 天之前"
+    }
+    var hour = parseInt(time / 60 / 60) % 24
+    if (hour != 0) {
+      return hour + " 小时之前"
+    }
+    var min = parseInt(time / 60) % 60
+    if (min != 0) {
+      return min + " 分钟之前"
+    }
+    var sec = time % 60
+    return sec + " 秒之前"
+  }
+
+  function dur(a) {
+    var hour = parseInt(a / 3600)
+    if (hour > 1) {
+      hour = hour + ":"
+    } else {
+      hour = ""
+    }
+    var min = parseInt(a % 3600 / 60)
+    if (min < 10) {
+      min = "0" + min + ":"
+    } else {
+      min = min + ":"
+    }
+    var sec = parseInt(a % 60)
+    if (sec < 10) {
+      sec = "0" + sec
+    } else {
+      sec = sec
+    }
+    return hour + min + sec
   }
 </wxs>

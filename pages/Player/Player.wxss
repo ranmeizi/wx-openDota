@@ -13,7 +13,7 @@
 .sanjiao {
   width: 25vw;
   position: absolute;
-  bottom: 40rpx;
+  top: 46rpx;
   display: flex;
   justify-content: center;
   transition: 0.15s linear 
@@ -23,7 +23,7 @@
   height: 0;
   width: 0;
   border-top: 0px solid black;
-  border-bottom: 14rpx solid #f2f2f2;
+  border-bottom: 14rpx solid #ddd;
   border-left: 14rpx solid transparent;
   border-right: 14rpx solid transparent;
 }

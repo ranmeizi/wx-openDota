@@ -1,0 +1,8 @@
+<view>
+  <view class="loading">
+    <view wx:for="{{tbody}}" wx:for-item="tr" class="flex-row">
+      <view wx:for="{{tr}}" wx:for-item="td" style="animation-delay:{{td*(dur / 10)}}s;height:{{r}};width:{{r}};background-color:{{color}};animation-duration:{{dur}}s"></view>
+    </view>
+  </view>
+</view>
+

@@ -1,2 +1,205 @@
-<!--components/Player/Heros/Heroes.wxml-->
-<text>components/Player/Heros/Heroes.wxml</text>
+<scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - 264rpx)" scroll-with-animation="true" enable-back-to-top="true">
+  <block>
+    <view class="padding-sm" style='background:#ddd'>
+      <text class='cuIcon-friendfavor sm'></text>队友统计</view>
+    <view class="cu-list menu-avatar">
+      <view class="cu-item" style="height:60rpx">
+        <view class="zcrRecent">
+          <view class='zcrRecent-item'>
+            英雄
+          </view>
+          <view class='zcrRecent-item'>
+            <view class="flex justify-between">
+              <text>胜率</text>
+              <text>场次</text>
+            </view>
+          </view>
+          <view class='zcrRecent-item'>
+            MMR
+          </view>
+          <view class='zcrRecent-item'>
+            排名
+          </view>
+        </view>
+      </view>
+      <view class="cu-item" wx:for="{{playersRankings}}" wx:for-item="heroItem" style='height:120rpx' data-index="{{index}}" bindtap='navigatePeer'>
+        <view class="zcrRecent">
+          <view class="cu-avatar round lg zcrRecent-item" style="background-image:url('https://api.opendota.com{{heroStats[heroItem.hero_id].img}}')"></view>
+          <!-- 胜率/场次 -->
+          <view class='zcrRecent-item'>
+            <view class='flex justify-between'>
+              <!-- 胜率 -->
+              <text>{{filter.toFixed(playersHeroes[heroItem.hero_id].win*100/playersHeroes[heroItem.hero_id].games,0)}}%</text>
+              <!-- 场次 -->
+              <text>{{playersHeroes[heroItem.hero_id].games}}</text>
+            </view>
+            <!-- 进度条 -->
+            <view class="cu-progress">
+              <view class="bg-red" style="width:{{filter.toFixed(playersHeroes[heroItem.hero_id].win*100/playersHeroes[heroItem.hero_id].games,0)}}%">{{filter.toFixed(playersHeroes[heroItem.hero_id].win*100/playersHeroes[heroItem.hero_id].games,0)}}%</view>
+            </view>
+          </view>
+          <!-- mmr -->
+          <view class='zcrRecent-item'>
+            <!-- mmr -->
+            <text>{{filter.toFixed(heroItem.score,2)}}</text>
+            <!-- 排名 -->
+            <text>{{m1.rankRange((1-heroItem.percent_rank)*heroItem.card)}}~{{m1.rankRange((1-heroItem.percent_rank+0.0005)*heroItem.card)}}</text>
+          </view>
+          <view class='zcrRecent-item'>
+            <!-- 胜率 -->
+            <text>{{filter.toFixed(heroItem.percent_rank*100,1)}}%</text>
+            <view class="cu-progress">
+              <view class="bg-red" style="width:{{filter.toFixed(heroItem.percent_rank*100,1)}}%">{{filter.toFixed(heroItem.percent_rank*100,1)}}%</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 查看全部 -->
+    <view>
+      <view class='flex justify-end padding-xs'>
+        <text>没有更多啦</text>
+        <text class="cuIcon-right"></text>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+
+<wxs module="filter">
+  module.exports = {
+    toFixed: toFixed,
+    toString: toString,
+    slice: slice,
+    findLastTime: findLastTime,
+    skill: skill,
+    game_mode: game_mode,
+    dur: dur
+  }
+
+  function toFixed(a, b) {
+    return a.toFixed(b)
+  }
+
+  function toString(a) {
+    return a + ""
+  }
+
+  function slice(arr, start, end) {
+    return arr.slice(start, end)
+  }
+
+  function skill(a) {
+    switch (a) {
+      case 1:
+        return 'Normal';
+      case 2:
+        return 'High';
+      case 3:
+        return 'Very High';
+      default:
+        return 'unknown'
+    }
+  }
+
+  function game_mode(a) {
+    switch (a) {
+      case 22:
+        return '全英雄选择';
+      case 3:
+        return '随机征召';
+      default:
+        return 'unknown'
+    }
+  }
+
+  function findLastTime(last_played) {
+    var time = Date.now() / 1000 - last_played
+
+    var year = parseInt(time / 60 / 60 / 24 / 30 / 12)
+    if (year != 0) {
+      return year + " 年之前"
+    }
+    var month = parseInt(time / 60 / 60 / 24 / 30) % 12
+    if (month != 0) {
+      return month + " 个月之前"
+    }
+    var day = parseInt(time / 60 / 60 / 24) % 30
+    if (day != 0) {
+      return day + " 天之前"
+    }
+    var hour = parseInt(time / 60 / 60) % 24
+    if (hour != 0) {
+      return hour + " 小时之前"
+    }
+    var min = parseInt(time / 60) % 60
+    if (min != 0) {
+      return min + " 分钟之前"
+    }
+    var sec = time % 60
+    return sec + " 秒之前"
+  }
+
+  function dur(a) {
+    var hour = parseInt(a / 3600)
+    if (hour > 1) {
+      hour = hour + ":"
+    } else {
+      hour = ""
+    }
+    var min = parseInt(a % 3600 / 60)
+    if (min < 10) {
+      min = "0" + min + ":"
+    } else {
+      min = min + ":"
+    }
+    var sec = parseInt(a % 60)
+    if (sec < 10) {
+      sec = "0" + sec
+    } else {
+      sec = sec
+    }
+    return hour + min + sec
+  }
+</wxs>
+<wxs module="m1">
+  module.exports = {
+    toFixed: toFixed,
+    rankRange: rankRange,
+    findLastTime: findLastTime
+  }
+
+  function toFixed(num) {
+    return num.toFixed(2)
+  }
+
+  function rankRange(num) {
+    return parseInt(num)
+  }
+
+  function findLastTime(last_played) {
+    var time = Date.now() / 1000 - last_played
+
+    var year = parseInt(time / 60 / 60 / 24 / 30 / 12)
+    if (year != 0) {
+      return year + " 年之前"
+    }
+    var month = parseInt(time / 60 / 60 / 24 / 30) % 12
+    if (month != 0) {
+      return month + " 个月之前"
+    }
+    var day = parseInt(time / 60 / 60 / 24) % 30
+    if (day != 0) {
+      return day + " 天之前"
+    }
+    var hour = parseInt(time / 60 / 60) % 24
+    if (hour != 0) {
+      return hour + " 小时之前"
+    }
+    var min = parseInt(time / 60) % 60
+    if (min != 0) {
+      return min + " 分钟之前"
+    }
+    var sec = time % 60
+    return sec + " 秒之前"
+  }
+</wxs>

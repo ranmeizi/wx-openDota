@@ -1,0 +1,23 @@
+/* components/loading/loading.wxss */
+.loading view {
+    animation-name: dongdong;
+    animation-iteration-count: infinite
+  }
+
+  @keyframes dongdong {
+    0% {
+      transform: scale(0);
+    }
+
+    50% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(0);
+    }
+  }
+.flex-row{
+  display: flex;
+  flex-direction: row
+}

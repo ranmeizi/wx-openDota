@@ -1,0 +1,4 @@
+<!--components/Player/Totals/leidatu/leidatu.wxml-->
+<view>
+  <ran-radar id="leidatutu" series="{{series}}" categories="categories"></ran-radar>
+</view>

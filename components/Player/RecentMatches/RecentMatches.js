@@ -12,8 +12,6 @@ Component({
     playersWl: Object,
     playersTotalsAll: Array,
     playersRecentMatches: Object,
-    playersRankings: Object,
-
   },
   /**
    * 组件的初始数据

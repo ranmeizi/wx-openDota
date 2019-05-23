@@ -1,1 +1,47 @@
-/* components/Player/Heros/Heroes.wxss */
+.zcrRecent {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: 40rpx;
+}
+
+.zcrRecent .zcrRecent-item {
+  position: absolute;
+  color: #888;
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.zcrRecent-item:nth-child(1) {
+  left: 0rpx;
+}
+
+.zcrRecent-item:nth-child(2) {
+  left: 130rpx;
+  width: 150rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis
+}
+
+.zcrRecent-item:nth-child(2).shengfu {
+  font-size: 28rpx;
+  height: 40rpx;
+  width: 40rpx;
+  color: white;
+  text-align: center;
+}
+
+.zcrRecent-item:nth-child(3) {
+  left: 300rpx;
+  width: 250rpx;
+}
+
+.zcrRecent-item:nth-child(4) {
+  left: 470rpx;
+  width:200rpx;
+}

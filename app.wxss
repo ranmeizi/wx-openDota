@@ -16,3 +16,7 @@
 .bg-dota-black {
   background-color: #263238;
 }
+.canvas {
+    width: 100%;
+    height: 200px;
+}

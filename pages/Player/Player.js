@@ -16,7 +16,8 @@ Page({
     playersPeers: null,
     playersPros: null,
     playersRatings:null,
-    player:null
+    player:null,
+    playersHeroes:null,
   },
 
   /**
@@ -115,12 +116,12 @@ Page({
       if (!this.data.playersRecentMatches) {
         this.getData('playersRecentMatches')
       }
-      if (!this.data.playersRankings) {
-        this.getData('playersRankings')
-      }
     } else if (cur == 1) {
       if (!this.data.playersRankings) {
         this.getData('playersRankings')
+      }
+      if (!this.data.playersHeroes) {
+        this.getData('playersHeroes')
       }
     } else if (cur == 2) {
       if (!this.data.playersTotals100) {
@@ -163,6 +164,21 @@ Page({
       }).then(res => {
         this.setData({
           playersRankings: res
+        })
+      })
+    } else if (cmd == "playersHeroes") {
+      app.openApiProxy({
+        aName: "playersHeroes",
+        args: {
+          account_id
+        }
+      }).then(res => {
+        let obj={}
+        res.forEach(item=>{
+          obj[item.hero_id]=item
+        })
+        this.setData({
+          playersHeroes: obj
         })
       })
     } else if (cmd == "playersTotalsAll") {
