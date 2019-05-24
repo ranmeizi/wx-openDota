@@ -1918,6 +1918,7 @@ var Charts = function Charts(opts) {
     opts.extra = opts.extra || {};
     opts.legend = opts.legend === false ? false : true;
     opts.animation = opts.animation === false ? false : true;
+    
     var config$$1 = assign({}, config);
     config$$1.yAxisTitleWidth = opts.yAxis.disabled !== true && opts.yAxis.title ? config$$1.yAxisTitleWidth : 0;
     config$$1.pieChartLinePadding = opts.dataLabel === false ? 0 : config$$1.pieChartLinePadding;
@@ -1925,7 +1926,7 @@ var Charts = function Charts(opts) {
 
     this.opts = opts;
     this.config = config$$1;
-    this.context = wx.createCanvasContext(opts.canvasId);
+    this.context = wx.createCanvasContext(opts.canvasId, opts.zcrthis);
     // store calcuated chart data
     // such as chart point coordinate
     this.chartData = {};

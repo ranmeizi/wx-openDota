@@ -23,6 +23,7 @@ Component({
   lifetimes: {
     attached() {
       this.radarTimer()
+      this.lineTimer()
     },
     detached() {
       // 在组件实例被从页面节点树移除时执行
@@ -63,7 +64,21 @@ Component({
       this.setData({
         chartData: this.data.chartData
       })
-      this.selectComponent('#radarCom').calc(this.data.chartData);
+      this.selectComponent('#radarCom').calc();
+    },
+    lineTimer(){
+      this.data.lineTimer=setInterval(()=>{
+        //折线图需要playersRatings接口数据
+        if (this.data.playersRatings){
+          //关闭定时器
+          clearInterval(this.data.lineTimer)
+          //call子组件
+          this.callLine()
+        }
+      },50)
+    },
+    callLine(){
+      this.selectComponent('#lineCom').draw();
     }
   },
 })

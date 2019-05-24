@@ -249,9 +249,9 @@ Page({
           playersPros: res
         })
       })
-    } else if (cmd == "ratings") {
+    } else if (cmd == "playersRatings") {
       app.openApiProxy({
-        aName: "ratings",
+        aName: "playersRatings",
         args: {
           account_id,
         }

@@ -52,7 +52,7 @@ Component({
     },
     shuchu: {
       hero_damage: {
-        value: 1,
+        value: 500,
         Weight: 1
       }
     },
@@ -77,7 +77,7 @@ Component({
       let dataList = []
       dataList.push({
         title: '比赛场次',
-        value: KDA
+        value: this.data.chartData[0].n
       })
       //计算
       //KDA
@@ -99,7 +99,7 @@ Component({
         value: last_hits
       })
       //hero_damage
-      let hero_damage = (obj.hero_damage.sum / obj.hero_damage.n).toFixed(0)
+      let hero_damage = (obj.hero_damage.sum*60 / obj.duration.sum).toFixed(0)
       dataList.push({
         title: '伤害/分钟',
         value: hero_damage
@@ -118,7 +118,8 @@ Component({
       //这块只有一个
       let seriesItem={
         name: '我的数据',
-        data: []
+        data: [],
+        color:"#aaa"
       }
       //计算权值
       //40*log(1+x)/log(15)
@@ -137,7 +138,7 @@ Component({
       seriesItem.data.forEach(item=>{
         sum+=item
       })
-      seriesItem.data.push(sum / 5)
+      seriesItem.data.push(parseInt(sum / 5))
       let series=[]
       series.push(seriesItem)
       //保存数据
@@ -146,22 +147,24 @@ Component({
         categories,
         dataList
       })
-      console.log(categories)
+      console.log(dataList)
       console.log(series)
 
       // callChart
-      this.selectComponent('#leidatutu').draw();
+      setTimeout(()=>{
+        this.selectComponent('#leidatutu').draw()
+      },1000)
     },
     calcuLog(cmd,obj){
       let rc=0;
       let count=0;
       for(let key in obj){
         count++
-        rc += obj[key] / this.data[cmd][key].value * this.data[cmd][key].Weight
+        rc += obj[key]*100 / this.data[cmd][key].value * this.data[cmd][key].Weight
       }
       rc = rc/count
       rc = 40 * Math.log(1 + rc) / Math.log(15)
-      rc=parseFloat(rc.toFixed(1))
+      rc=parseInt(rc)
       return rc
     }
   }

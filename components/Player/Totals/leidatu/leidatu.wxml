@@ -1,4 +1,23 @@
 <!--components/Player/Totals/leidatu/leidatu.wxml-->
 <view>
-  <ran-radar id="leidatutu" series="{{series}}" categories="categories"></ran-radar>
+  <!-- 雷达图 -->
+  <ran-radar id="leidatutu" series="{{series}}" categories="{{categories}}"></ran-radar>
+  <!-- 进度条 -->
+  <view class='padding-sm'>
+    <view class='text-center'>评分</view>
+    <view class="flex margin-top">
+      <view class="cu-progress round sm">
+        <view class="bg-green" style="width:{{series[0].data[5]}}%;background-color:#999"></view>
+      </view>
+      <text class="margin-left">{{series[0].data[5]}}</text>
+    </view>
+  </view>
+  <!-- 九宫格 -->
+  <view class="zcr cu-list grid col-3 gridBorder">
+      <!-- 总场次 -->
+      <view wx:for="{{dataList}}" class="cu-item flex-direction align-center">
+        <text class='ying you hei'>{{item.title}}</text>
+        <text>{{item.value}}</text>
+      </view>
+    </view>
 </view>
