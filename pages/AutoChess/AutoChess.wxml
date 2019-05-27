@@ -4,14 +4,13 @@
     <!-- 棋盘 -->
     <view class='chece'>
       <view class='chessView'>
-        <view class="testChess {{zhuan?'active':''}}" style='top:{{position.y[row]}}vw;left:{{col*10}}vw;z-index:10;' bindanimationend="buzhuan">
+        <view class="testChess {{zhuan?'active':''}}" style='top:{{8*row-4}}vw;left:{{col*10}}vw;z-index:10;' bindanimationend="buzhuan" bindtransitionend="zhuan">
         </view>
 
         <!-- 行 -->
         <view wx:for="{{chece}}" wx:for-item="checeRowItem" wx:for-index="checeRowIndex">
           <!-- 块 -->
-          <view class='checeItem' wx:for="{{checeRowItem}}" wx:for-item="checeItem" wx:for-index="checeIndex" style="background-color:{{(checeRowIndex+checeIndex)%2==1?'#f2f2f2':'#fff'}};transform:translate({{checeRowIndex*10}}vw,{{checeIndex*8}}vw)" data-col="{{checeRowIndex}}"
-            data-row="{{checeIndex}}" bindtap='te'></view>
+          <view class='checeItem' wx:for="{{checeRowItem}}" wx:for-item="checeItem" wx:for-index="checeIndex" style="background-color:{{(checeRowIndex+checeIndex)%2==1?'#f2f2f2':'#fff'}};transform:translate({{checeRowIndex*10}}vw,{{checeIndex*8}}vw)" data-col="{{checeRowIndex}}" data-row="{{checeIndex}}"></view>
         </view>
         <!-- 等待区 -->
         <view style='transform:translateY(68vw)'>

@@ -109,7 +109,6 @@ Page({
     })
   },
   te(e){
-    console.log(e.currentTarget.dataset.col, e.currentTarget.dataset.row)
     this.setData({
       col: e.currentTarget.dataset.col,
       row: e.currentTarget.dataset.row
