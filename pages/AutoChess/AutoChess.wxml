@@ -2,24 +2,22 @@
   <!-- 视口 -->
   <view class="view">
     <!-- 棋盘 -->
-    <view class='chece'>
+    <view class='chece' bindtouchstart='touchstart' bindtouchmove='touchmove'>
       <view class='chessView'>
-        <view class="testChess {{zhuan?'active':''}}" style='top:{{8*row-4}}vw;left:{{col*10}}vw;z-index:10;' bindanimationend="buzhuan" bindtransitionend="zhuan">
+        <view id="difashi" class="testChess {{zhuan?'active':''}}" style='top:{{10*row-4}}vw;left:{{col*10}}vw;z-index:10;' bindanimationend="buzhuan" bindtransitionend="zhuan" >
         </view>
 
         <!-- 行 -->
         <view wx:for="{{chece}}" wx:for-item="checeRowItem" wx:for-index="checeRowIndex">
           <!-- 块 -->
-          <view class='checeItem' wx:for="{{checeRowItem}}" wx:for-item="checeItem" wx:for-index="checeIndex" style="background-color:{{(checeRowIndex+checeIndex)%2==1?'#f2f2f2':'#fff'}};transform:translate({{checeRowIndex*10}}vw,{{checeIndex*8}}vw)" data-col="{{checeRowIndex}}" data-row="{{checeIndex}}"></view>
+          <view id="c{{checeRowIndex}}{{checeIndex}}" class='checeItem {{(clickxuanzhong.row==checeRowIndex&&clickxuanzhong.col==checeIndex)?"active":""}} {{(movexuanzhong.row==checeRowIndex&&movexuanzhong.col==checeIndex)?"active":""}}' wx:for="{{checeRowItem}}" wx:for-item="checeItem" wx:for-index="checeIndex"
+            style="background-color:{{(checeRowIndex+checeIndex)%2==1?'#f2f2f2':'#fff'}};transform:translate({{checeIndex*10}}vw,{{checeRowIndex*10}}vw)" data-col="{{checeIndex}}" data-row="{{checeRowIndex}}" bindtap="te"></view>
         </view>
         <!-- 等待区 -->
-        <view style='transform:translateY(68vw)'>
-          <view wx:for="{{waitList}}" style="background-color:{{index%2==1?'#f2f2f2':'#fff'}};transform:translateX({{index*10}}vw)" class='checeItem'></view>
+        <view style='transform:translateY(84vw)'>
+          <view wx:for="{{wait}}" style="background-color:{{index%2==1?'#f2f2f2':'#fff'}};transform:translateX({{index*10}}vw)" class='checeItem {{(clickxuanzhong.row==9.4&&clickxuanzhong.col==index)?"active":""}} {{(movexuanzhong.row==9.4&&movexuanzhong.col==index)?"active":""}}'
+            data-col="{{index}}" data-row="9.4" bindtap="te"></view>
         </view>
-        <!-- 测试棋子 -->
-
-
-
       </view>
     </view>
   </view>
@@ -44,4 +42,7 @@
   <button bindtap='zou1' data-row="5" style='float:left'>6</button>
   <button bindtap='zou1' data-row="6" style='float:left'>7</button>
   <button bindtap='zou1' data-row="7" style='float:left'>8</button>
+</view>
+<view style='position:absolute;top:125vw;'>
+  <button bindtap='difashi' data-row="0" style='float:left'>买一个敌法师</button>
 </view>
