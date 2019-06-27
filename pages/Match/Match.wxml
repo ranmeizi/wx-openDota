@@ -1,0 +1,45 @@
+<view class='Macth'>
+  <!-- 比赛编号：match_id -->
+  <view class='flex header'>
+    <view class='flex flex-direction align-center'>
+      <text>结束时间</text>
+      <text>{{filter.findLastTime(match.start_time+match.duration)}}</text>
+    </view>
+    <view class='flex flex-direction align-center'>
+      <text>持续时间</text>
+      <text>{{filter.dur(match.duration)}}</text>
+    </view>
+    <view class='flex flex-direction align-center'>
+      <text>Level</text>
+      <text>{{filter.skill(match.skill)}}</text>
+    </view>
+    <view class='flex flex-direction align-center'>
+      <text>比赛模式</text>
+      <text>{{filter.game_mode(match.game_mode)}}</text>
+    </view>
+  </view>
+  <!-- 头部：结束时间/持续时间/level/比赛模式 -->
+  <!-- start_time+duration/duration/skill/game_mode -->
+
+  <!-- body -->
+  <ran-camp wx:if="{{match.players}}" playerArr="{{match.players}}" radiant_win="{{match.radiant_win}}"/>
+  <!-- 阵营 component 用于收集player里的player数据 -->
+  <!-- 
+    传递一个{radiant_win,camp:radiant/dire},天辉绿色，夜魇红色
+    利用player数据，算出杀敌/经验/金钱
+
+    player组件，显示
+    英雄头像|数据|装备|玩家头像
+    装备：item-物品栏   backpack-背包栏
+    点击显示
+    数据统计    评分
+    ---------------
+    技能加点
+   -->
+  <!-- footer -->
+  <!-- 数据对比组件 -->
+  <!-- 太难了 先不做 -->
+</view>
+
+<!-- 微信脚本 -->
+<wxs module='filter' src='../../wxs/filter.wxs' />

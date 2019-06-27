@@ -1,0 +1,40 @@
+/* components/Match/PlayerItem/PlayerItem.wxss */
+.playerLineItem{
+  align-items: center;
+  padding: 10rpx;
+  border-bottom: 1rpx solid #ddd
+}
+.playerLineItem .heroImg {
+  height: 80rpx;
+  width: 150rpx;
+  background-size: 150rpx 80rpx;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.playerLineItem .heroImg>view {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.35);
+  text-align: end;
+  color: white;
+}
+
+.playerLineItem .name {
+  color: #093;
+  font-size: 28rpx;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.playerLineItem .equipItem {
+  height: 38rpx;
+  width: 60rpx;
+  margin-right: 4rpx;
+  margin-bottom: 4rpx;
+  background-size: 60rpx 38rpx;
+  background-repeat: no-repeat;
+}

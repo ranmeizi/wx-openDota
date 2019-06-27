@@ -68,6 +68,9 @@ function getReq(aName, args) {
   else if (aName == "playersRatings") {
     url = `https://api.opendota.com/api/players/${args.account_id}/ratings`
   }
+  else if (aName =="matches"){
+    url = `https://api.opendota.com/api/matches/${args.match_id}`
+  }
   //英雄信息：英雄属性/英雄头像。。。
   else if (aName == "heroStats") {
     url = 'https://api.opendota.com/api/heroStats'

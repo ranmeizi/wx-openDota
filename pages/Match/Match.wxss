@@ -1,0 +1,16 @@
+/* pages/Match/Match.wxss */
+.Macth>.header>view{
+  width: 25%;
+  height:150rpx;
+  background: #263238;
+  justify-content: space-around;
+  padding-top: 20rpx;
+  padding-bottom:40rpx; 
+}
+.Macth>.header>view>text:first-child{
+  color: gray;
+}
+.Macth>.header>view>text:last-child{
+  color: white;
+  font-size: 14px;
+}

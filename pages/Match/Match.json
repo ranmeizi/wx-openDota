@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "ran-camp":"../../components/Match/Camp/Camp"
+  }
+}

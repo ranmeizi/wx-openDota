@@ -1,5 +1,7 @@
 let openApi=require('/utils/openApi.js')
 
+import ITEM_LIST from '/utils/wupin.js'
+
 //app.js
 App({
   onLaunch: function() {
@@ -39,8 +41,17 @@ App({
   },
   globalData: {
     userInfo: null,
-    apiCounter:new Map()
+    apiCounter:new Map(),
+    ITEM_LIST
   },
+
+  //公共跳转写在APP里
+  gotoMatch(matchId){
+    wx.navigateTo({
+      url:`/pages/Match/Match?matchid=${matchId}`
+    })
+  },
+
   //注意，因为API是免费的
   //所有接口使用openApi代理调取，计算每分钟次数
   openApiProxy:new Proxy(openApi,{

@@ -5,7 +5,8 @@
     "pages/HeroData/HeroData",
     "pages/loading/loading",
     "pages/Query/Query",
-    "pages/Player/Player"
+    "pages/Player/Player",
+    "pages/Match/Match"
   ],
   "window": {
     "backgroundTextStyle": "light",

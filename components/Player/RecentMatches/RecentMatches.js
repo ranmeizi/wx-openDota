@@ -53,6 +53,9 @@ Component({
       this.setData({
         downList: !this.data.downList
       })
+    },
+    openMatch(e){
+      app.gotoMatch(e.currentTarget.dataset.matchid)
     }
   }
 })

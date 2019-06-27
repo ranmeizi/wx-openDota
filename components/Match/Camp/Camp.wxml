@@ -1,0 +1,61 @@
+<!--components/Match/Camp/Camp.wxml-->
+<view>
+  <!-- 天辉 -->
+  <view class='radiant'>
+    <!-- 头部 -->
+    <view class="flex justify-between header">
+      <!-- 阵营：胜利/失败 -->
+      <view class='flex flag align-center justify-around'>
+        <view class='flex flex-direction align-center'>
+          <view>Radiant</view>
+          <view style='font-size:24rpx'>天辉</view>
+        </view>
+        <view style='font-size:28rpx'>
+          {{radiant_win?'胜利':'失败'}}
+        </view>
+      </view>
+
+      <!-- 计算总数 -->
+      <view class="flex justify-around align-center" style='width:40%;color:gray;font-size:22rpx'>
+        <view>杀敌 {{Radiant.kill}}</view>
+        <view>经验 {{Radiant.exp}}</view>
+        <view>金钱 {{Radiant.gold}}</view>
+      </view>
+    </view>
+    <!-- 玩家列表 -->
+    <view>
+      <view wx:for='{{playerArr}}' wx:key='{{item.account_key}}'>
+        <zcr-PlayerItem wx:if='{{item.isRadiant}}' playerData='{{item}}' campTotal="{{Radiant}}"></zcr-PlayerItem>
+      </view>
+    </view>
+  </view>
+  <!-- 夜魇 -->
+  <view class='dire'>
+    <!-- 头部 -->
+    <view class="flex justify-between header">
+      <!-- 阵营：胜利/失败 -->
+      <view class='flex flag align-center justify-around'>
+        <view class='flex flex-direction align-center'>
+          <view>Dire</view>
+          <view style='font-size:24rpx'>夜魇</view>
+        </view>
+        <view style='font-size:28rpx'>
+          {{!radiant_win?'胜利':'失败'}}
+        </view>
+      </view>
+
+      <!-- 计算总数 -->
+      <view class="flex justify-around align-center" style='width:40%;color:gray;font-size:22rpx'>
+        <view>杀敌 {{Dire.kill}}</view>
+        <view>经验 {{Dire.exp}}</view>
+        <view>金钱 {{Dire.gold}}</view>
+      </view>
+    </view>
+    <!-- 玩家列表 -->
+    <view>
+      <view wx:for='{{playerArr}}' wx:key='{{item.account_key}}'>
+        <zcr-PlayerItem wx:if='{{!item.isRadiant}}' playerData='{{item}}' campTotal="{{Dire}}"></zcr-PlayerItem>
+      </view>
+    </view>
+  </view>
+</view>

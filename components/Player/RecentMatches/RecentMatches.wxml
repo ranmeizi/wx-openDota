@@ -116,7 +116,7 @@
           </view>
         </view>
       </view>
-      <view class="cu-item" wx:for="{{filter.slice(playersRecentMatches,0,5)}}" wx:for-item="matchItem">
+      <view class="cu-item" wx:for="{{filter.slice(playersRecentMatches,0,5)}}" wx:for-item="matchItem" catchtap='openMatch' data-matchid='{{matchItem.match_id}}'>
         <view class="zcrRecent">
           <view class="cu-avatar round lg zcrRecent-item" style="background-image:url('https://api.opendota.com{{heroStats[matchItem.hero_id].img}}');"></view>
           <!-- 结果 -->
