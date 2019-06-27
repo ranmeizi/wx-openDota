@@ -8,7 +8,7 @@
     技能加点 -->
 <view class='flex playerLineItem'>
   <!-- 英雄头像 -->
-  <view class='heroImg' style="background-image:url('https://api.opendota.com{{heroStats[playerData.hero_id].img}}')">
+  <view class='heroImg' style="background-image:url('https://api.opendota.com{{heroPic}}')">
     <view>{{playerData.level}}</view>
   </view>
   <!-- 数据 -->
@@ -19,13 +19,13 @@
     </view>
     <!-- 参战率/k/d/a -->
     <view class='flex justify-between'>
-      <text>参战率:{{filter.toFixed((playerData.kill+playerData.assists)/campTotal.kill,1)}}%</text>
+      <text>参战率:{{filter.toFixed(100*(playerData.kills+playerData.assists)/campTotal.kills,1)}}%</text>
       <text>{{playerData.kills}}/{{playerData.deaths}}/{{playerData.assists}}</text>
     </view>
     <!-- 伤害比例/kda -->
     <view class='flex justify-between'>
-      <text>伤害:{{filter.toFixed(playerData.hero_damage/campTotal.damage,1)}}%</text>
-      <text>KDA:{{filter.toFixed((playerData.kill+playerData.assists)/playerData.deaths,1)}}%</text>
+      <text>伤害:{{filter.toFixed(100*playerData.hero_damage/campTotal.damage,1)}}%</text>
+      <text>KDA:{{filter.toFixed((playerData.kills+playerData.assists)/playerData.deaths,1)}}</text>
     </view>
   </view>
   <!-- 装备 -->

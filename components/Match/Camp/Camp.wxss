@@ -22,3 +22,25 @@
   border-top: 70rpx solid #009933;
   border-right: 70rpx solid transparent
 }
+.dire .header{
+  margin-top: 40rpx;
+  border-top: 2px solid #cc3300
+}
+
+.dire .flag{
+  position: relative;
+  background: #cc3300;
+  color: white;
+  width: 25%;
+  font-size: 20rpx;
+  height:70rpx;
+}
+.dire .flag::after{
+  content: '';
+  display: block;
+  position: absolute;
+  right: -70rpx;
+  height: 0;
+  border-top: 70rpx solid #cc3300;
+  border-right: 70rpx solid transparent
+}

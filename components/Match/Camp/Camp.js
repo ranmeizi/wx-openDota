@@ -28,26 +28,26 @@ Component({
     attached: function() {
       //获取阵营数据 杀敌/经验/金钱
       let Radiant = {
-        kill: 0,
+        kills: 0,
         exp: 0,
         gold: 0,
         damage:0
       }
       let Dire = {
-        kill: 0,
+        kills: 0,
         exp: 0,
         gold: 0,
         damage: 0
       }
       this.data.playerArr.forEach(item => {
         if (item.isRadiant) {
-          Radiant.kill += item.kill
+          Radiant.kills += item.kills
           Radiant.exp += item.xp_per_min
           Radiant.gold += item.gold_per_min
           Radiant.damage += item.hero_damage
         }
         else{
-          Dire.kill += item.kill
+          Dire.kills += item.kills
           Dire.exp += item.xp_per_min
           Dire.gold += item.gold_per_min
           Dire.damage += item.hero_damage

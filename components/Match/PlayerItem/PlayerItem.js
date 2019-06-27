@@ -46,7 +46,7 @@ Component({
           heroStats[item.id] = item
         })
         this.setData({
-          heroStats
+          heroPic: heroStats[this.data.playerData.hero_id].img
         })
       }
 
