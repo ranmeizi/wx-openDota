@@ -18,14 +18,30 @@ Component({
    */
   data: {
     itemList,
-    itemObj
+    itemObj, 
+    hideHeight:0
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-
+    naviPlayer(e){
+      console.log(e)
+      let account_id  = e.target.dataset.accountid
+      wx.navigateTo({
+        url: `/pages/Player/Player?account_id=${account_id}`,
+      })
+    },
+    show(){
+      let hideHeight=0
+      if (this.data.hideHeight===0){
+        hideHeight='150rpx'
+      }
+      this.setData({
+        hideHeight
+      })
+    }
   },
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
@@ -65,6 +81,10 @@ Component({
           personaname: res.profile.personaname
         })
       })
+      this.setData({
+        benchmarks: Object.values(this.data.playerData.benchmarks)
+      })
+      console.log(this.data.benchmarks)
     },
     moved: function() {},
     detached: function() {},

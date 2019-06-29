@@ -37,4 +37,38 @@
   margin-bottom: 4rpx;
   background-size: 60rpx 38rpx;
   background-repeat: no-repeat;
+  background-color: #dedede
+}
+.playerLineItem .mark{
+  font-weight: 600;
+  color: white;
+  background: #263238;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 76rpx;
+  position: relative;
+  right:-10rpx;
+  font-size: 28rpx;
+  transform-origin: right;
+}
+.playerLineItem .mark::before{
+  position: absolute;
+  border-top: 56rpx solid transparent;
+  border-right: 56rpx solid #263238;
+  border-left: none;
+  border-bottom: none;
+  width: 0;
+  height: 0;
+  content: '';
+  display: block;
+  top: 0;
+  left: 0;
+  margin-left: -56rpx;
+  transform: scaleX(0.5);
+  transform-origin: right
+}
+.playerLineItem .hidden{
+  overflow: hidden;
+  transition: 0.3s;
 }

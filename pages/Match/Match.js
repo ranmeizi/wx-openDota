@@ -87,7 +87,7 @@ Page({
       let small = { ...res }
       small.players = small.players.map(item => {
         delete item.ability_upgrades_arr
-        delete item.benchmarks
+        // delete item.benchmarks
         delete item.connection_log
         delete item.creeps_stacked
         delete item.damage

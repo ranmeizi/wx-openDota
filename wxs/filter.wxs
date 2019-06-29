@@ -5,7 +5,20 @@ module.exports = {
   findLastTime: findLastTime,
   skill: skill,
   game_mode: game_mode,
-  dur: dur
+  dur: dur,
+  pingfen: pingfen
+}
+function pingfen(arr){
+  // 循环obj平均值
+  var sum = 0
+  var count=0
+  for(var i=0;i<arr.length;i++){
+    if (arr[i].pct){
+      sum += arr[i].pct
+      count++
+    }
+  }
+  return toFixed(sum*10 / count,1)
 }
 
 function toFixed(a, b) {
@@ -77,7 +90,7 @@ function findLastTime(last_played) {
 
 function dur(a) {
   var hour = parseInt(a / 3600)
-  if (hour > 1) {
+  if (hour >= 1) {
     hour = hour + ":"
   } else {
     hour = ""

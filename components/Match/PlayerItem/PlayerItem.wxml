@@ -6,44 +6,85 @@
     数据统计    评分
     ---------------
     技能加点 -->
-<view class='flex playerLineItem'>
-  <!-- 英雄头像 -->
-  <view class='heroImg' style="background-image:url('https://api.opendota.com{{heroPic}}')">
-    <view>{{playerData.level}}</view>
+
+<view class='flex flex-direction playerLineItem'>
+  <view class='flex' bindtap='show'>
+    <!-- 英雄头像 -->
+    <view class='heroImg' style="background-image:url('https://api.opendota.com{{heroPic}}')">
+      <view>{{playerData.level}}</view>
+    </view>
+    <!-- 数据 -->
+    <view class='flex flex-direction' style='color:gray;font-size:24rpx;width:280rpx;padding:0 10rpx'>
+      <!-- 名字 -->
+      <view class='name' style=''>
+        {{personaname}}
+      </view>
+      <!-- 参战率/k/d/a -->
+      <view class='flex justify-between'>
+        <text>参战率:{{filter.toFixed(100*(playerData.kills+playerData.assists)/campTotal.kills,1)}}%</text>
+        <text>{{playerData.kills}}/{{playerData.deaths}}/{{playerData.assists}}</text>
+      </view>
+      <!-- 伤害比例/kda -->
+      <view class='flex justify-between'>
+        <text>伤害:{{filter.toFixed(100*playerData.hero_damage/campTotal.damage,1)}}%</text>
+        <text>KDA:{{filter.toFixed((playerData.kills+playerData.assists)/playerData.deaths,1)}}</text>
+      </view>
+    </view>
+    <!-- 装备 -->
+    <view class='flex flex-direction'>
+      <!-- 前三个 -->
+      <view class='flex'>
+        <view class='equipItem' style="background-image:url('https://api.opendota.com{{itemObj[itemList[playerData.item_0]].img}}')"></view>
+        <view class='equipItem' style="background-image:url('https://api.opendota.com{{itemObj[itemList[playerData.item_1]].img}}')"></view>
+        <view class='equipItem' style="background-image:url('https://api.opendota.com{{itemObj[itemList[playerData.item_2]].img}}')"></view>
+      </view>
+      <!-- 后三个 -->
+      <view class='flex'>
+        <view class='equipItem' style="background-image:url('https://api.opendota.com{{itemObj[itemList[playerData.item_3]].img}}')"></view>
+        <view class='equipItem' style="background-image:url('https://api.opendota.com{{itemObj[itemList[playerData.item_4]].img}}')"></view>
+        <view class='equipItem' style="background-image:url('https://api.opendota.com{{itemObj[itemList[playerData.item_5]].img}}')"></view>
+      </view>
+    </view>
+    <!-- 玩家头像，点击玩家头像，跳转player页面 -->
+    <view class='cu-avatar lg round margin-left' style="background-image:url('{{playerImg}}');margin-left:0" bindtap='naviPlayer' data-accountid="{{playerData.account_id}}"></view>
   </view>
-  <!-- 数据 -->
-  <view class='flex flex-direction' style='color:gray;font-size:24rpx;width:280rpx;padding:0 10rpx'>
-    <!-- 名字 -->
-    <view class='name' style=''>
-      {{personaname}}
-    </view>
-    <!-- 参战率/k/d/a -->
-    <view class='flex justify-between'>
-      <text>参战率:{{filter.toFixed(100*(playerData.kills+playerData.assists)/campTotal.kills,1)}}%</text>
-      <text>{{playerData.kills}}/{{playerData.deaths}}/{{playerData.assists}}</text>
-    </view>
-    <!-- 伤害比例/kda -->
-    <view class='flex justify-between'>
-      <text>伤害:{{filter.toFixed(100*playerData.hero_damage/campTotal.damage,1)}}%</text>
-      <text>KDA:{{filter.toFixed((playerData.kills+playerData.assists)/playerData.deaths,1)}}</text>
+  <!-- 隐藏部分 -->
+  <view class='hidden' style='width:100%;font-size:22rpx;color:gray;max-height:{{hideHeight}}'>
+    <!-- 更多数据 -->
+    <view class='flex flex-direction'>
+      <!-- 英雄伤害/背包物品 -->
+      <view class='flex justify-between'>
+        <text>英雄伤害:{{playerData.hero_damage}}</text>
+        <view class='flex' style='transform:translateX(-102rpx)'>
+          <view class='equipItem' style="background-image:url('https://api.opendota.com{{itemObj[itemList[playerData.backpack_0]].img}}')"></view>
+          <view class='equipItem' style="background-image:url('https://api.opendota.com{{itemObj[itemList[playerData.backpack_1]].img}}')"></view>
+          <view class='equipItem' style="background-image:url('https://api.opendota.com{{itemObj[itemList[playerData.backpack_2]].img}}')"></view>
+        </view>
+      </view>
+      <!-- 每分钟经验/建筑伤害/正补  下一行  每分钟金钱/英雄治疗/反补  旁边评分？咋平啊。。。0~9.9 -->
+      <view class='flex justify-between'>
+        <!-- 数据 -->
+        <view class='flex flex-direction' style='width:85%'>
+          <!-- 每分钟经验/建筑伤害/正补 -->
+          <view class='flex justify-between'>
+            <view>每分钟经验:{{playerData.xp_per_min}}</view>
+            <view>建筑伤害:{{playerData.tower_damage}}</view>
+            <view>正补:{{playerData.last_hits}}</view>
+          </view>
+           <!-- 每分钟金钱/英雄治疗/反补 -->
+          <view class='flex justify-between'>
+            <view>每分钟金钱:{{playerData.gold_per_min}}</view>
+            <view>英雄治疗:{{playerData.hero_healing}}</view>
+            <view>反补:{{playerData.denies}}</view>
+          </view>
+        </view>
+        <!-- 评分 -->
+        <view class='mark'>
+          {{filter.pingfen(benchmarks)}}
+        </view>
+      </view>
+      <view></view>
     </view>
   </view>
-  <!-- 装备 -->
-  <view class='flex flex-direction'>
-    <!-- 前三个 -->
-    <view class='flex'>
-      <view class='equipItem' style="background-image:url('https://api.opendota.com{{itemObj[itemList[playerData.item_0]].img}}')"></view>
-      <view class='equipItem' style="background-image:url('https://api.opendota.com{{itemObj[itemList[playerData.item_1]].img}}')"></view>
-      <view class='equipItem' style="background-image:url('https://api.opendota.com{{itemObj[itemList[playerData.item_2]].img}}')"></view>
-    </view>
-    <!-- 后三个 -->
-    <view class='flex'>
-      <view class='equipItem' style="background-image:url('https://api.opendota.com{{itemObj[itemList[playerData.item_3]].img}}')"></view>
-      <view class='equipItem' style="background-image:url('https://api.opendota.com{{itemObj[itemList[playerData.item_4]].img}}')"></view>
-      <view class='equipItem' style="background-image:url('https://api.opendota.com{{itemObj[itemList[playerData.item_5]].img}}')"></view>
-    </view>
-  </view>
-  <!-- 玩家头像 -->
-  <view class='cu-avatar lg round margin-left' style="background-image:url('{{playerImg}}');margin-left:0"></view>
 </view>
 <wxs module='filter' src='../../../wxs/filter.wxs' />

@@ -17,7 +17,7 @@
 
       <!-- 计算总数 -->
       <view class="flex justify-around align-center" style='width:40%;color:gray;font-size:22rpx'>
-        <view>杀敌 {{Radiant.kill}}</view>
+        <view>杀敌 {{Radiant.kills}}</view>
         <view>经验 {{Radiant.exp}}</view>
         <view>金钱 {{Radiant.gold}}</view>
       </view>
@@ -46,7 +46,7 @@
 
       <!-- 计算总数 -->
       <view class="flex justify-around align-center" style='width:40%;color:gray;font-size:22rpx'>
-        <view>杀敌 {{Dire.kill}}</view>
+        <view>杀敌 {{Dire.kills}}</view>
         <view>经验 {{Dire.exp}}</view>
         <view>金钱 {{Dire.gold}}</view>
       </view>
